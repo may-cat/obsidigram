@@ -118,7 +118,7 @@ export default class MyPlugin extends Plugin {
                     continue;
                 }
 
-                for (const update of data.result) {
+                for (const update of data.result ?? []) {
                     this.lastUpdateId = update.update_id;
 
                     // Проверяем флаг перед обработкой каждого сообщения
