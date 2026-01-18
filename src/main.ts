@@ -132,7 +132,7 @@ export default class MyPlugin extends Plugin {
 
     private async processMessage(text: string) {
         const lines = text.split('\n');
-        const firstLine = lines[0].trim();
+        const firstLine = (lines[0] ?? '').trim();
 
         let fileName: string;
         let messageContent: string;
