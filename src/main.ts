@@ -1,6 +1,35 @@
 import { Notice, Plugin, TFile } from 'obsidian';
 import { DEFAULT_SETTINGS, MyPluginSettings, SampleSettingTab } from "./settings";
 
+// Типы для Telegram API
+interface TelegramResponse {
+    ok: boolean;
+    result?: TelegramUpdate[];
+    error_code?: number;
+    description?: string;
+}
+
+interface TelegramUpdate {
+    update_id: number;
+    message?: {
+        text?: string;
+        caption?: string;
+    };
+}
+
+// Тип для OpenAI API
+interface OpenAIResponse {
+    choices?: {
+        message?: {
+            content?: string;
+        };
+    }[];
+    error?: {
+        message?: string;
+    };
+    message?: string;
+}
+
 export default class MyPlugin extends Plugin {
     settings: MyPluginSettings;
     private pollingActive: boolean = false;
@@ -73,7 +102,7 @@ export default class MyPlugin extends Plugin {
                     break;
                 }
 
-                const data = await response.json();
+                const data: TelegramResponse = await response.json();
 
                 if (!data.ok) {
                     // Проверяем на конфликт
@@ -116,19 +145,20 @@ export default class MyPlugin extends Plugin {
         console.log('Polling loop ended');
     }
 
-    private async handleUpdate(update: any) {
-        let text: string | null = null;
+	private async handleUpdate(update: TelegramUpdate) {
+		let text: string | null = null;
 
-        if (update.message?.text) {
-            text = update.message.text;
-        } else if (update.message?.caption) {
-            text = update.message.caption;
-        }
+		if (update.message?.text) {
+			text = update.message.text;
+		} else if (update.message?.caption) {
+			text = update.message.caption;
+		}
 
-        if (text) {
-            await this.processMessage(text);
-        }
-    }
+		if (text) {
+			await this.processMessage(text);
+		}
+	}
+
 
     private async processMessage(text: string) {
         const lines = text.split('\n');
@@ -228,12 +258,12 @@ export default class MyPlugin extends Plugin {
 
             const responseText = await response.text();
 
-            let data: any;
-            try {
-                data = JSON.parse(responseText);
-            } catch (parseError) {
-                return { success: false, content: '', error: `Не удалось распарсить ответ: ${responseText.substring(0, 200)}` };
-            }
+			let data: OpenAIResponse;
+			try {
+				data = JSON.parse(responseText) as OpenAIResponse;
+			} catch (parseError) {
+				return { success: false, content: '', error: `Не удалось распарсить ответ: ${responseText.substring(0, 200)}` };
+			}
 
             if (!response.ok) {
                 const errorMessage = data.error?.message || data.message || `HTTP ${response.status}`;
