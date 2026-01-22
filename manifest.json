@@ -1,9 +1,9 @@
 {
-	"id": "obsidigram-plugin",
-	"name": "Obsidigram Plugin",
+	"id": "obsidigram",
+	"name": "Obsidigram",
 	"version": "0.0.1",
 	"minAppVersion": "0.15.0",
-	"description": "Plugin to provide telegram bot support with AI superpowers to Obsidian.",
+	"description": "Plugin to provide telegram bot support with AI superpowers.",
 	"author": "Igor Tsupko",
 	"authorUrl": "https://tsupko.tech",
 	"fundingUrl": "https://tsupko.tech",

@@ -1,7 +1,7 @@
 {
-	"name": "obsidigram-plugin",
+	"name": "obsidigram",
 	"version": "0.0.1",
-	"description": "Plugin to provide telegram bot support with AI superpowers to Obsidian",
+	"description": "Telegram bot support with AI superpowers to Obsidian",
 	"main": "main.js",
 	"type": "module",
 	"scripts": {
