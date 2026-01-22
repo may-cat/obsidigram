@@ -62,7 +62,8 @@ export class ObsidigramSettingTab extends PluginSettingTab {
 		containerEl.empty();
 
 		// ===== TELEGRAM =====
-		containerEl.createEl("h2", { text: "📱 Telegram" });
+		//containerEl.createEl("h2", { text: "📱 Telegram" });
+		new Setting(containerEl).setName("Telegram").setHeading();
 
 		new Setting(containerEl)
 			.setName("Bot token")
@@ -97,7 +98,7 @@ export class ObsidigramSettingTab extends PluginSettingTab {
 		);
 
 		// ===== OPENAI =====
-		containerEl.createEl("h2", { text: "Openai" });
+		new Setting(containerEl).setName("Openai").setHeading();
 
 		new Setting(containerEl)
 			.setName("Api key")
@@ -172,7 +173,7 @@ export class ObsidigramSettingTab extends PluginSettingTab {
 			);
 
 		// ===== PROMPTS =====
-		containerEl.createEl("h2", { text: "Prompts" });
+		new Setting(containerEl).setName("Prompts").setHeading();
 
 		new Setting(containerEl)
 			.setName("System prompt")
@@ -211,7 +212,7 @@ export class ObsidigramSettingTab extends PluginSettingTab {
 		 */
 
 		// ===== VALIDATION =====
-		containerEl.createEl("h2", { text: "Validation" });
+		new Setting(containerEl).setName("Validation").setHeading();
 
 		new Setting(containerEl)
 			.setName("Minimum reply length")
