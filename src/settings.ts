@@ -201,12 +201,14 @@ export class ObsidigramSettingTab extends PluginSettingTab {
 			);
 
 		// Делаем текстовые области больше
+		/*
 		containerEl
 			.querySelectorAll("textarea")
 			.forEach((textarea: HTMLTextAreaElement) => {
 				textarea.style.width = "100%";
 				textarea.style.minHeight = "100px";
 			});
+		 */
 
 		// ===== VALIDATION =====
 		containerEl.createEl("h2", { text: "Validation" });
