@@ -220,7 +220,7 @@ export default class ObsidigramPlugin extends Plugin {
 
 			if (aiResult.content.length < this.settings.minResponseLength) {
 				new Notice(
-					`Obsidigram: AI\'s response is too short (${aiResult.content.length} symbols). I suppose it\'s some error, file not changed.`,
+					`Obsidigram: AI's response is too short (${aiResult.content.length} symbols). I suppose it's some error, file not changed.`,
 				);
 				return;
 			}

@@ -102,7 +102,7 @@ export class ObsidigramSettingTab extends PluginSettingTab {
 
 		new Setting(containerEl)
 			.setName("Api key")
-			.setDesc("Key from OpenApi\'s API")
+			.setDesc("Key from OpenApi's API")
 			.addText((text) =>
 				text
 					.setPlaceholder("sk-...")
