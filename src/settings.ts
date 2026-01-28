@@ -93,7 +93,7 @@ export class ObsidigramSettingTab extends PluginSettingTab {
 
 		new Setting(containerEl).addButton((button) =>
 			button.setButtonText("Reboot bot").onClick(() => {
-				this.plugin.restartBot();
+				void this.plugin.restartBot();
 			}),
 		);
 

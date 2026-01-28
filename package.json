@@ -1,6 +1,6 @@
 {
 	"name": "obsidigram",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"description": "Telegram bot support with AI superpowers to Obsidian",
 	"main": "main.js",
 	"type": "module",

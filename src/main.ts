@@ -1,4 +1,5 @@
 import { Notice, Plugin, TFile } from "obsidian";
+import { requestUrl } from "obsidian";
 import {
 	DEFAULT_SETTINGS,
 	ObsidigramPluginSettings,
@@ -63,7 +64,7 @@ export default class ObsidigramPlugin extends Plugin {
 		}
 
 		this.pollingActive = true;
-		this.pollUpdates();
+		this.pollUpdates().catch((err) => console.error("Polling error:", err));
 		new Notice("Obsidigram: telegram bot is online");
 	}
 
@@ -266,7 +267,8 @@ export default class ObsidigramPlugin extends Plugin {
 		};
 
 		try {
-			const response = await fetch(url, {
+			const response = await requestUrl({
+				url: url,
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -275,7 +277,8 @@ export default class ObsidigramPlugin extends Plugin {
 				body: JSON.stringify(requestBody),
 			});
 
-			const responseText = await response.text();
+			// const responseText = await response.text();
+			const responseText = response.text;
 
 			let data: OpenAIResponse;
 			try {
@@ -288,7 +291,7 @@ export default class ObsidigramPlugin extends Plugin {
 				};
 			}
 
-			if (!response.ok) {
+			if (response.status < 200 || response.status >= 300) {
 				const errorMessage =
 					data.error?.message ||
 					data.message ||
