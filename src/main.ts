@@ -233,8 +233,10 @@ export default class ObsidigramPlugin extends Plugin {
 				new Notice(`Obsidigram: file created - ${fileName}`);
 			}
 		} catch (error) {
+			const message =
+				error instanceof Error ? error.message : String(error);
 			console.error("Obsidigram error:", error);
-			new Notice(`Obsidigram error: ${error}`);
+			new Notice(`Obsidigram error: ${message}`);
 		}
 	}
 
