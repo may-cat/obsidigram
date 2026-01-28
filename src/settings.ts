@@ -102,7 +102,7 @@ export class ObsidigramSettingTab extends PluginSettingTab {
 
 		new Setting(containerEl)
 			.setName("Api key")
-			.setDesc("Key from openapi\'s api")
+			.setDesc("Key from OpenApi\'s API")
 			.addText((text) =>
 				text
 					.setPlaceholder("sk-...")
@@ -114,8 +114,8 @@ export class ObsidigramSettingTab extends PluginSettingTab {
 			);
 
 		new Setting(containerEl)
-			.setName("Api host")
-			.setDesc("Api host (for compatable providers)")
+			.setName("API host")
+			.setDesc("API host (for compatable providers)")
 			.addText((text) =>
 				text
 					.setPlaceholder("https://api.openai.com")
@@ -131,7 +131,7 @@ export class ObsidigramSettingTab extends PluginSettingTab {
 
 		new Setting(containerEl)
 			.setName("Model name")
-			.setDesc("Used llm model")
+			.setDesc("Used LLM model")
 			.addText((text) =>
 				text
 					.setPlaceholder("gpt-4o-mini")
@@ -177,7 +177,7 @@ export class ObsidigramSettingTab extends PluginSettingTab {
 
 		new Setting(containerEl)
 			.setName("System prompt")
-			.setDesc("System promt for llm")
+			.setDesc("System promt for LLM")
 			.addTextArea((text) =>
 				text
 					.setPlaceholder("You are note-taking app...")
